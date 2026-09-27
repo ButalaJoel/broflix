@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#111217"/>
+      <stop offset="100%" stop-color="#05070a"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="900" fill="url(#bg)"/>
+  <rect x="50" y="110" width="500" height="680" rx="24" fill="#101218"/>
+  <path d="M120 700L250 180H350L480 700H120Z" fill="#1d2230"/>
+  <path d="M205 640L300 250L395 640H205Z" fill="#00FF00" opacity="0.8"/>
+  <text x="300" y="560" text-anchor="middle" fill="#f5f5f5" font-size="42" font-family="Arial, Helvetica, sans-serif" font-weight="700">GRAY</text>
+  <text x="300" y="610" text-anchor="middle" fill="#f5f5f5" font-size="30" font-family="Arial, Helvetica, sans-serif" font-weight="600">RUNNER</text>
+</svg>

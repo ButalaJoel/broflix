@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#101216"/>
+      <stop offset="100%" stop-color="#05070a"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="900" fill="url(#bg)"/>
+  <rect x="50" y="110" width="500" height="680" rx="24" fill="#0f1418"/>
+  <path d="M160 700C220 500 245 380 300 180C355 380 380 500 440 700H160Z" fill="#1a212b"/>
+  <circle cx="300" cy="420" r="95" fill="#00FF00" opacity="0.8"/>
+  <text x="300" y="565" text-anchor="middle" fill="#f5f5f5" font-size="42" font-family="Arial, Helvetica, sans-serif" font-weight="700">SABLE</text>
+  <text x="300" y="615" text-anchor="middle" fill="#f5f5f5" font-size="28" font-family="Arial, Helvetica, sans-serif" font-weight="600">ECHO</text>
+</svg>

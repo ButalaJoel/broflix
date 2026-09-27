@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#190d1a"/>
+      <stop offset="100%" stop-color="#070707"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="900" fill="url(#bg)"/>
+  <rect x="50" y="110" width="500" height="680" rx="24" fill="#171116"/>
+  <circle cx="260" cy="270" r="140" fill="#36162a"/>
+  <path d="M260 130L315 255L400 350L260 760L120 350L205 255Z" fill="#00FF00" opacity="0.7"/>
+  <text x="300" y="560" text-anchor="middle" fill="#f5f5f5" font-size="42" font-family="Arial, Helvetica, sans-serif" font-weight="700">MIDNIGHT</text>
+  <text x="300" y="610" text-anchor="middle" fill="#f5f5f5" font-size="30" font-family="Arial, Helvetica, sans-serif" font-weight="600">BLOOM</text>
+</svg>

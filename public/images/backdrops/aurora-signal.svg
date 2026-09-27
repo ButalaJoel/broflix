@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Aurora Signal placeholder</title>
+  <desc id="desc">Development placeholder backdrop for Aurora Signal.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#09131a"/>
+      <stop offset="45%" stop-color="#0b1d2a"/>
+      <stop offset="100%" stop-color="#05070a"/>
+    </linearGradient>
+    <linearGradient id="beam" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0%" stop-color="#00FF00" stop-opacity="0.15"/>
+      <stop offset="50%" stop-color="#00FF00" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#00FF00" stop-opacity="0.15"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <circle cx="1180" cy="240" r="180" fill="#0f2f3d" opacity="0.8"/>
+  <circle cx="1180" cy="240" r="90" fill="#00FF00" opacity="0.3"/>
+  <path d="M0 640 C240 590, 360 470, 660 530 S1160 660, 1600 560 L1600 900 L0 900 Z" fill="#0a0f16"/>
+  <path d="M0 420 C420 350, 560 270, 850 340 S1280 430, 1600 360 L1600 900 L0 900 Z" fill="url(#beam)" opacity="0.85"/>
+  <path d="M300 150 L520 150 L760 250 L520 310 L300 250 Z" fill="#00FF00" opacity="0.22"/>
+  <path d="M340 165 L500 165 L700 238 L500 290 L340 240 Z" fill="#00FF00" opacity="0.38"/>
+  <rect x="340" y="160" width="280" height="130" rx="14" fill="#0a0a0a" opacity="0.32"/>
+  <circle cx="420" cy="225" r="22" fill="#00FF00" opacity="0.9"/>
+  <path d="M408 212 L432 225 L408 238 Z" fill="#09131a"/>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#1d1417"/>
+      <stop offset="100%" stop-color="#080808"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="900" fill="url(#bg)"/>
+  <rect x="50" y="110" width="500" height="680" rx="24" fill="#1a1418"/>
+  <path d="M120 720L260 200H340L480 720H120Z" fill="#2e1b22"/>
+  <path d="M220 620L300 250L380 620H220Z" fill="#00FF00" opacity="0.8"/>
+  <text x="300" y="560" text-anchor="middle" fill="#f5f5f5" font-size="38" font-family="Arial, Helvetica, sans-serif" font-weight="700">BRIGHT</text>
+  <text x="300" y="610" text-anchor="middle" fill="#f5f5f5" font-size="26" font-family="Arial, Helvetica, sans-serif" font-weight="600">LATTICE</text>
+</svg>

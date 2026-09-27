@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Vanta Echo placeholder</title>
+  <desc id="desc">Development placeholder backdrop for Vanta Echo.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0b0f12"/>
+      <stop offset="50%" stop-color="#111821"/>
+      <stop offset="100%" stop-color="#09090a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <path d="M0 620 C260 520, 430 490, 670 560 S1120 720, 1600 630 L1600 900 L0 900 Z" fill="#10171d"/>
+  <path d="M0 440 C260 400, 470 380, 770 470 S1240 560, 1600 490 L1600 900 L0 900 Z" fill="#1a262d" opacity="0.85"/>
+  <path d="M280 330 Q500 180 820 330 T1340 300" stroke="#00FF00" stroke-width="8" fill="none" opacity="0.5"/>
+  <circle cx="1180" cy="190" r="110" fill="#00FF00" opacity="0.18"/>
+  <rect x="260" y="180" width="240" height="130" rx="18" fill="#111111" opacity="0.52"/>
+  <circle cx="330" cy="246" r="24" fill="#00FF00" opacity="0.8"/>
+  <path d="M318 233 L344 246 L318 259 Z" fill="#111111"/>
+</svg>

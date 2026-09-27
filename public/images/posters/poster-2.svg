@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#1e120f"/>
+      <stop offset="100%" stop-color="#070707"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="900" fill="url(#bg)"/>
+  <rect x="50" y="110" width="500" height="680" rx="24" fill="#161110"/>
+  <path d="M160 710L360 170L450 350L410 710Z" fill="#2b1b18"/>
+  <path d="M170 620L265 250L365 390L300 620Z" fill="#00FF00" opacity="0.8"/>
+  <text x="300" y="540" text-anchor="middle" fill="#f5f5f5" font-size="54" font-family="Arial, Helvetica, sans-serif" font-weight="700">CINDER</text>
+  <text x="300" y="600" text-anchor="middle" fill="#f5f5f5" font-size="34" font-family="Arial, Helvetica, sans-serif" font-weight="600">RUN</text>
+</svg>

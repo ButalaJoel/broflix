@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#130d11"/>
+      <stop offset="100%" stop-color="#050505"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="900" fill="url(#bg)"/>
+  <rect x="50" y="110" width="500" height="680" rx="24" fill="#130d11"/>
+  <path d="M100 660L260 180L500 660H100Z" fill="#2a1219"/>
+  <path d="M185 390L300 210L415 390L300 660L185 390Z" fill="#00FF00" opacity="0.75"/>
+  <text x="300" y="575" text-anchor="middle" fill="#f5f5f5" font-size="48" font-family="Arial, Helvetica, sans-serif" font-weight="700">VANTA</text>
+  <text x="300" y="630" text-anchor="middle" fill="#f5f5f5" font-size="30" font-family="Arial, Helvetica, sans-serif" font-weight="600">ECHO</text>
+</svg>
