@@ -1,11 +1,11 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Footer } from "@/components/home/footer";
 import { ContentRow } from "@/components/home/content-row";
 import { Hero } from "@/components/home/hero";
 import { MovieCard } from "@/components/home/movie-card";
 import { featuredMovies, trendingMovies } from "@/data/movies";
+import { getRelatedTitles } from "@/lib/catalog";
 import { trendingSeries } from "@/data/series";
 import type { Movie } from "@/types/movie";
 
@@ -17,13 +17,11 @@ export default function HomePage() {
       return [];
     }
 
-    const relatedIds = new Set(selectedMovie.relatedMovieIds ?? []);
-    return trendingMovies.filter((movie) => relatedIds.has(movie.id));
+    return getRelatedTitles(selectedMovie);
   }, [selectedMovie]);
 
   return (
-    <>
-      <main className="bg-[#0a0a0a] text-white">
+    <main className="bg-[#0a0a0a] text-white">
         {selectedMovie ? <Hero movie={selectedMovie} /> : null}
 
         <ContentRow title="Trending Movies">
@@ -60,9 +58,6 @@ export default function HomePage() {
             ))}
           </ContentRow>
         ) : null}
-      </main>
-
-      <Footer />
-    </>
+    </main>
   );
 }

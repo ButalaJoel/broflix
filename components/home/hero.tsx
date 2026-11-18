@@ -1,6 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
+import { MyListButton } from "@/components/movie/my-list-button";
+import { getDetailsHref, getWatchHref } from "@/lib/catalog";
 import { useEffect, useRef, useState } from "react";
 import type { Movie } from "@/types/movie";
 import { formatRuntime } from "@/lib/utils";
@@ -111,25 +114,28 @@ export function Hero({ movie }: HeroProps) {
             </p>
 
             <div className="mt-7 flex flex-wrap gap-3">
-              <button
-                type="button"
+              <Link
+                href={getWatchHref(movie)}
                 className="inline-flex items-center gap-2 rounded-full bg-[#00FF00] px-6 py-3 text-sm font-bold text-[#0a0a0a] shadow-[0_0_20px_rgba(0,255,0,0.22)] transition-transform duration-200 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00FF00] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]"
               >
                 <svg aria-hidden="true" viewBox="0 0 24 24" className="size-4 fill-current">
                   <path d="M8 5.5v13l10-6.5-10-6.5Z" />
                 </svg>
                 Play
-              </button>
+              </Link>
 
-              <button
-                type="button"
+              <Link
+                href={getDetailsHref(movie)}
                 className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/25 px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-colors duration-200 hover:border-white/40 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00FF00] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]"
               >
-                <svg aria-hidden="true" viewBox="0 0 24 24" className="size-4 fill-current">
-                  <path d="M12 5a1 1 0 0 1 1 1v5h5a1 1 0 1 1 0 2h-5v5a1 1 0 1 1-2 0v-5H6a1 1 0 1 1 0-2h5V6a1 1 0 0 1 1-1Z" />
+                <svg aria-hidden="true" viewBox="0 0 24 24" className="size-4" fill="none">
+                  <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.8" />
+                  <path d="M12 11v5M12 8h.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
                 </svg>
                 More Info
-              </button>
+              </Link>
+
+              <MyListButton movieId={movie.id} title={movie.title} />
             </div>
           </div>
         </div>

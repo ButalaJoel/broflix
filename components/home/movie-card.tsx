@@ -1,7 +1,10 @@
 "use client";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import type { KeyboardEvent, MouseEvent, PointerEvent } from "react";
+import { MyListButton } from "@/components/movie/my-list-button";
+import { getDetailsHref, getWatchHref } from "@/lib/catalog";
 import type { Movie } from "@/types/movie";
 import { formatRuntime } from "@/lib/utils";
 
@@ -15,9 +18,16 @@ export function MovieCard({ movie, onSelect, selected = false }: MovieCardProps)
   const videoRef = useRef<HTMLVideoElement>(null);
   const [previewActive, setPreviewActive] = useState(false);
   const [videoPlaying, setVideoPlaying] = useState(false);
+  const router = useRouter();
 
+  // With onSelect (home page) a click features the title in the hero;
+  // everywhere else a click opens the title's details page.
   const handleCardClick = () => {
-    onSelect?.(movie);
+    if (onSelect) {
+      onSelect(movie);
+      return;
+    }
+    router.push(getDetailsHref(movie));
   };
 
   const handleCardKeyDown = (event: KeyboardEvent<HTMLElement>) => {
@@ -27,8 +37,9 @@ export function MovieCard({ movie, onSelect, selected = false }: MovieCardProps)
     }
   };
 
-  const stopCardSelection = (event: MouseEvent<HTMLButtonElement>) => {
+  const handlePlay = (event: MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
+    router.push(getWatchHref(movie));
   };
 
   const stopCardKeyboardSelection = (event: KeyboardEvent<HTMLButtonElement>) => {
@@ -85,8 +96,8 @@ export function MovieCard({ movie, onSelect, selected = false }: MovieCardProps)
     <article
       role="button"
       tabIndex={0}
-      aria-label={`Select ${movie.title}`}
-      aria-pressed={selected}
+      aria-label={onSelect ? `Select ${movie.title}` : `View ${movie.title}`}
+      aria-pressed={onSelect ? selected : undefined}
       onClick={handleCardClick}
       onKeyDown={handleCardKeyDown}
       onPointerEnter={startPreview}
@@ -135,20 +146,13 @@ export function MovieCard({ movie, onSelect, selected = false }: MovieCardProps)
           <div className="pointer-events-auto flex items-center gap-2">
             <button
               type="button"
-              onClick={stopCardSelection}
+              onClick={handlePlay}
               onKeyDown={stopCardKeyboardSelection}
               className="inline-flex min-h-7 items-center rounded-md bg-[#00FF00] px-2.5 text-[11px] font-bold text-[#0a0a0a]"
             >
               Play
             </button>
-            <button
-              type="button"
-              onClick={stopCardSelection}
-              onKeyDown={stopCardKeyboardSelection}
-              className="inline-flex min-h-7 items-center rounded-md border border-white/20 bg-black/35 px-2.5 text-[11px] font-medium text-white"
-            >
-              My List
-            </button>
+            <MyListButton movieId={movie.id} title={movie.title} variant="compact" />
           </div>
         </div>
       </div>
