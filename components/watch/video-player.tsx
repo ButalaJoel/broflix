@@ -5,6 +5,9 @@ import { useEffect, useRef, useState } from "react";
 
 type VideoPlayerProps = {
   src: string;
+  /** When set, the title plays in its host's embedded player (e.g. Internet Archive). */
+  embedUrl?: string;
+  credit?: string;
   poster: string;
   title: string;
   backHref: string;
@@ -15,7 +18,7 @@ type VideoPlayerProps = {
  * Native controls give seeking, volume, captions and fullscreen for free;
  * a dedicated player library can replace this when HLS/DRM streams arrive.
  */
-export function VideoPlayer({ src, poster, title, backHref }: VideoPlayerProps) {
+export function VideoPlayer({ src, embedUrl, credit, poster, title, backHref }: VideoPlayerProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [chromeVisible, setChromeVisible] = useState(true);
   const [failed, setFailed] = useState(false);
@@ -30,17 +33,26 @@ export function VideoPlayer({ src, poster, title, backHref }: VideoPlayerProps) 
   };
 
   useEffect(() => {
+    if (embedUrl) return;
     void videoRef.current?.play().catch(() => {
       // Autoplay with sound is often blocked; the user can press play.
     });
     return () => {
       if (hideTimer.current) clearTimeout(hideTimer.current);
     };
-  }, [src]);
+  }, [src, embedUrl]);
 
   return (
     <div className="relative flex min-h-[calc(100svh-4rem)] items-center justify-center bg-black" onPointerMove={showChrome}>
-      {failed ? (
+      {embedUrl ? (
+        <iframe
+          src={embedUrl}
+          title={`Now playing: ${title}`}
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowFullScreen
+          className="aspect-video max-h-[calc(100svh-4rem)] w-full border-0 bg-black"
+        />
+      ) : failed ? (
         <div className="px-6 text-center">
           <p className="text-lg font-semibold text-white">This title can&apos;t be played right now.</p>
           <p className="mt-2 text-sm text-zinc-400">The video file is missing or in an unsupported format.</p>
@@ -67,7 +79,7 @@ export function VideoPlayer({ src, poster, title, backHref }: VideoPlayerProps) 
       <div
         className={[
           "pointer-events-none absolute inset-x-0 top-0 bg-linear-to-b from-black/80 to-transparent px-4 pb-10 pt-4 transition-opacity duration-300 sm:px-8",
-          chromeVisible || failed ? "opacity-100" : "opacity-0",
+          chromeVisible || failed || embedUrl ? "opacity-100" : "opacity-0",
         ].join(" ")}
       >
         <div className="pointer-events-auto flex items-center gap-4">
@@ -83,6 +95,7 @@ export function VideoPlayer({ src, poster, title, backHref }: VideoPlayerProps) 
           <div>
             <p className="text-[10px] font-semibold uppercase tracking-[0.26em] text-[#00FF00]">Now playing</p>
             <p className="text-lg font-bold text-white">{title}</p>
+            {credit ? <p className="text-[11px] text-zinc-400">{credit}</p> : null}
           </div>
         </div>
       </div>

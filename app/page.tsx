@@ -5,9 +5,14 @@ import { ContentRow } from "@/components/home/content-row";
 import { Hero } from "@/components/home/hero";
 import { MovieCard } from "@/components/home/movie-card";
 import { featuredMovies, trendingMovies } from "@/data/movies";
-import { getRelatedTitles } from "@/lib/catalog";
-import { trendingSeries } from "@/data/series";
-import type { Movie } from "@/types/movie";
+import { getRelatedTitles, getTitlesByGenre } from "@/lib/catalog";
+import type { Movie, MovieGenre } from "@/types/movie";
+
+const genreRows: { title: string; genre: MovieGenre }[] = [
+  { title: "Horror Classics", genre: "Horror" },
+  { title: "Comedy Night", genre: "Comedy" },
+  { title: "Sci-Fi & Fantasy", genre: "Sci-Fi" },
+];
 
 export default function HomePage() {
   const [selectedMovie, setSelectedMovie] = useState<Movie | null>(featuredMovies[0] ?? null);
@@ -24,7 +29,7 @@ export default function HomePage() {
     <main className="bg-[#0a0a0a] text-white">
         {selectedMovie ? <Hero movie={selectedMovie} /> : null}
 
-        <ContentRow title="Trending Movies">
+        <ContentRow title="Trending Now">
           {trendingMovies.map((movie) => (
             <MovieCard
               key={movie.id}
@@ -35,16 +40,18 @@ export default function HomePage() {
           ))}
         </ContentRow>
 
-        <ContentRow title="Trending Series">
-          {trendingSeries.map((series) => (
-            <MovieCard
-              key={series.id}
-              movie={series}
-              onSelect={setSelectedMovie}
-              selected={selectedMovie?.id === series.id}
-            />
-          ))}
-        </ContentRow>
+        {genreRows.map((row) => (
+          <ContentRow key={row.genre} title={row.title}>
+            {getTitlesByGenre(row.genre).map((movie) => (
+              <MovieCard
+                key={movie.id}
+                movie={movie}
+                onSelect={setSelectedMovie}
+                selected={selectedMovie?.id === movie.id}
+              />
+            ))}
+          </ContentRow>
+        ))}
 
         {moreLikeThis.length > 0 ? (
           <ContentRow title="More Like This">

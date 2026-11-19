@@ -37,6 +37,10 @@ export type Movie = {
   previewVideoUrl?: string;
   /** Full-length stream for the watch page. Falls back to the preview, then the default clip. */
   videoUrl?: string;
+  /** Embeddable player URL (e.g. Internet Archive). Used instead of videoUrl when set. */
+  embedUrl?: string;
+  /** Licence / attribution line shown on the details and watch pages. */
+  credit?: string;
   featured?: boolean;
 };
 

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#061a1f"/>
+      <stop offset="100%" stop-color="#020709"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="900" fill="url(#bg)"/>
+  <circle cx="300.0" cy="297.0" r="48.0" fill="none" stroke="#00e5ff" stroke-width="3" opacity="0.5"/><circle cx="300.0" cy="297.0" r="90.00000000000001" fill="none" stroke="#00e5ff" stroke-width="3" opacity="0.4"/><circle cx="300.0" cy="297.0" r="132.00000000000003" fill="none" stroke="#00e5ff" stroke-width="3" opacity="0.3"/><circle cx="300.0" cy="297.0" r="174.00000000000003" fill="none" stroke="#00e5ff" stroke-width="3" opacity="0.19999999999999996"/>
+  <rect x="40" y="40" width="520" height="820" rx="22" fill="none" stroke="#ffffff" stroke-opacity="0.08"/>
+  <path d="M276 92L316 112L276 132Z" fill="#00FF00"/>
+  <text x="300" y="430" text-anchor="middle" fill="#f5f5f5" font-size="60" font-family="Arial Black, Arial, Helvetica, sans-serif" font-weight="900" letter-spacing="2">ELEPHANTS</text>
+  <text x="300" y="504" text-anchor="middle" fill="#f5f5f5" font-size="60" font-family="Arial Black, Arial, Helvetica, sans-serif" font-weight="900" letter-spacing="2">DREAM</text>
+  <text x="300" y="790" text-anchor="middle" fill="#00e5ff" font-size="18" font-family="Arial, Helvetica, sans-serif" font-weight="700" letter-spacing="5">2006 · SCI-FI / FANTASY</text>
+</svg>
