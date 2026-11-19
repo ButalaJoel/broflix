@@ -113,7 +113,7 @@ export function MovieCard({ movie, onSelect, selected = false }: MovieCardProps)
           alt={movie.poster.alt}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 20vw"
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          className="object-cover object-[center_25%] transition-transform duration-500 group-hover:scale-105"
         />
         {movie.previewVideoUrl ? (
           <video

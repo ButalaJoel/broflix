@@ -16,8 +16,35 @@ const BLENDER = "© Blender Foundation · Creative Commons Attribution licence";
 
 const archive = (identifier: string) => `https://archive.org/embed/${identifier}`;
 
+/**
+ * Posters are public-domain (or CC BY, for the Blender films) images from Wikimedia
+ * Commons. Backdrops are BroFlix's own SVG artwork.
+ */
+const POSTERS: Record<string, string> = {
+  "night-of-the-living-dead":
+    "https://upload.wikimedia.org/wikipedia/commons/a/a7/Night_Of_The_Living_Dead_%281968%29_-_Poster.jpg",
+  "charade":
+    "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fd/Charade_%281963_poster%29.jpg/960px-Charade_%281963_poster%29.jpg",
+  "his-girl-friday":
+    "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/His_Girl_Friday_%281940_poster%29_crop.jpg/960px-His_Girl_Friday_%281940_poster%29_crop.jpg",
+  "nosferatu":
+    "https://upload.wikimedia.org/wikipedia/commons/9/95/Max_Schreck_as_Count_Orlok_in_Nosferatu_%E2%80%93_Eine_Symphonie_des_Grauens_%281922%29.jpg",
+  "detour":
+    "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/47/Detour_%28poster%29.jpg/960px-Detour_%28poster%29.jpg",
+  "the-little-shop-of-horrors":
+    "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1c/The_Little_Shop_of_Horrors_%281960%29_-_Half-Sheet_poster.webp/960px-The_Little_Shop_of_Horrors_%281960%29_-_Half-Sheet_poster.webp",
+  "plan-9-from-outer-space":
+    "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bf/Plan_9_Alternative_poster.jpg/960px-Plan_9_Alternative_poster.jpg",
+  "carnival-of-souls":
+    "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bd/Carnival_of_Souls_%281962_pressbook_cover%29.jpg/960px-Carnival_of_Souls_%281962_pressbook_cover%29.jpg",
+  "cosmos-laundromat":
+    "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c5/CosmosLaundromatPoster.jpg/960px-CosmosLaundromatPoster.jpg",
+  "elephants-dream":
+    "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0c/ElephantsDreamPoster.jpg/960px-ElephantsDreamPoster.jpg",
+};
+
 const art = (slug: string, title: string) => ({
-  poster: { src: `/images/posters/${slug}.svg`, alt: `Poster for ${title}` },
+  poster: { src: POSTERS[slug] ?? `/images/posters/${slug}.svg`, alt: `Poster for ${title}` },
   backdrop: { src: `/images/backdrops/${slug}.svg`, alt: `Backdrop for ${title}` },
 });
 
@@ -55,7 +82,7 @@ export const mockMovies: MovieList = [
     matchPercentage: 95,
     maturityRating: "13+",
     ...art("charade", "Charade"),
-    embedUrl: archive("Charade19631280x696"),
+    embedUrl: archive("charade-1963-cary-grant-audrey-hepburn-comedy-mystery-romance-thriller-full-movie"),
     credit: PUBLIC_DOMAIN,
     relatedMovieIds: ["his-girl-friday", "detour"],
     featured: true,
@@ -88,11 +115,11 @@ export const mockMovies: MovieList = [
       "An estate agent travels to the castle of the mysterious Count Orlok, unaware he is bringing plague and death home with him. F. W. Murnau's silent masterpiece of shadow and dread.",
     rating: 7.8,
     releaseYear: 1922,
-    runtimeMinutes: 94,
+    runtimeMinutes: 93,
     matchPercentage: 88,
     maturityRating: "13+",
     ...art("nosferatu", "Nosferatu"),
-    embedUrl: archive("nosferatu-1922-by-f.-w.-murnau"),
+    embedUrl: archive("Nosferatu_most_complete_version_93_mins."),
     credit: PUBLIC_DOMAIN,
     relatedMovieIds: ["night-of-the-living-dead", "carnival-of-souls"],
   },
