@@ -52,7 +52,7 @@ The launch catalogue is 10 films BroFlix may legally stream for free:
 - **Public-domain classics** (Night of the Living Dead, Charade, His Girl Friday, Nosferatu, Detour, The Little Shop of Horrors, Plan 9 from Outer Space, Carnival of Souls). These play through the Internet Archive's embedded player (`embedUrl`).
 - **Blender Foundation open movies** (Cosmos Laundromat, Elephants Dream), Creative Commons Attribution licensed. Keep their `credit` line visible.
 
-Posters and backdrops are original SVG artwork in `public/images/`.
+Posters are public-domain (or CC BY) images from Wikimedia Commons; backdrops are original SVG artwork in `public/images/backdrops/`.
 
 ## Adding a title
 
