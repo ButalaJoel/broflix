@@ -45,9 +45,23 @@ data/                mock movies & series
 types/               shared models
 ```
 
+## Catalogue
+
+The launch catalogue is 10 films BroFlix may legally stream for free:
+
+- **Public-domain classics** (Night of the Living Dead, Charade, His Girl Friday, Nosferatu, Detour, The Little Shop of Horrors, Plan 9 from Outer Space, Carnival of Souls). These play through the Internet Archive's embedded player (`embedUrl`).
+- **Blender Foundation open movies** (Cosmos Laundromat, Elephants Dream), Creative Commons Attribution licensed. Keep their `credit` line visible.
+
+Posters and backdrops are original SVG artwork in `public/images/`.
+
 ## Adding a title
 
-Add an entry to `data/movies.ts` or `data/series.ts`. Put the poster/backdrop in `public/images/` and, for playback, a video in `public/videos/` referenced by `videoUrl` (falls back to `previewVideoUrl`, then the sample clip).
+Add an entry to `data/movies.ts` (or `data/series.ts`). For playback set either:
+
+- `videoUrl`: a video file you host (e.g. in Cloudflare R2) and have the rights to, or
+- `embedUrl`: an embeddable player from a licensed/legal host.
+
+Set `credit` to the licence or attribution line.
 
 ## Roadmap
 

@@ -22,6 +22,10 @@ export function getTitlesByType(type: MovieType): Movie[] {
   return allTitles.filter((title) => title.type === type);
 }
 
+export function getTitlesByGenre(genre: MovieGenre): Movie[] {
+  return allTitles.filter((title) => title.genres.includes(genre));
+}
+
 export function getTitleBySlug(type: MovieType, slug: string): Movie | undefined {
   return allTitles.find((title) => title.type === type && title.slug === slug);
 }

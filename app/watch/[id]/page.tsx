@@ -25,6 +25,8 @@ export default async function WatchPage({ params }: PageProps<"/watch/[id]">) {
     <main>
       <VideoPlayer
         src={getVideoUrl(title)}
+        embedUrl={title.embedUrl}
+        credit={title.credit}
         poster={title.backdrop.src}
         title={title.title}
         backHref={getDetailsHref(title)}

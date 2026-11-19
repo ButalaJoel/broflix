@@ -44,7 +44,7 @@ Next steps when they are actually needed: real auth, a backend/API for the catal
 
 ## Content rule
 
-Only stream video BROFLIX has the rights to (files in `public/videos/` or a licensed CDN). Do not wire in third-party "free streaming" embed sources.
+Only stream video BROFLIX has the rights to: public-domain or Creative Commons works (currently via the Internet Archive embed player / Wikimedia Commons), or licensed files on BROFLIX's own storage. Never wire in pirate "free streaming" embed sources or scraped links. Keep each title's `credit` line visible.
 
 ## Important framework conventions
 

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { CatalogBrowser } from "@/components/movie/catalog-browser";
+import { EmptyState } from "@/components/ui/empty-state";
 import { PageIntro } from "@/components/ui/page-intro";
 import { getGenres, getTitlesByType } from "@/lib/catalog";
 
@@ -14,7 +15,16 @@ export default function SeriesPage() {
   return (
     <main>
       <PageIntro eyebrow="Catalogue" title="Series" description="Binge-worthy shows, one more episode at a time." />
-      <CatalogBrowser titles={series} genres={getGenres(series)} />
+      {series.length > 0 ? (
+        <CatalogBrowser titles={series} genres={getGenres(series)} />
+      ) : (
+        <EmptyState
+          title="Series are coming soon"
+          description="We're lining up our first shows. Until then, there are full-length movies ready to stream."
+          actionLabel="Browse movies"
+          actionHref="/movies"
+        />
+      )}
     </main>
   );
 }

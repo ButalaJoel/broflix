@@ -58,6 +58,7 @@ export function TitleDetails({ movie }: TitleDetailsProps) {
             </div>
 
             <p className="mt-5 max-w-2xl text-base leading-7 text-zinc-300">{movie.description}</p>
+            {movie.credit ? <p className="mt-3 text-xs text-zinc-500">{movie.credit}</p> : null}
 
             <div className="mt-7 flex flex-wrap gap-3">
               <Link

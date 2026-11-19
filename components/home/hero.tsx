@@ -78,7 +78,7 @@ export function Hero({ movie }: HeroProps) {
         <div className="relative z-30 flex min-h-[420px] items-end px-5 pb-10 pt-16 sm:min-h-[480px] sm:px-8 sm:pb-12 lg:min-h-[540px] lg:px-12">
           <div className="max-w-xl">
             <p className="mb-4 text-[10px] font-semibold uppercase tracking-[0.26em] text-zinc-300 sm:text-xs">
-              Broflix Original
+              Featured · Free to watch
             </p>
 
             <h1 className="text-4xl font-black tracking-tight text-white sm:text-5xl lg:text-7xl">
