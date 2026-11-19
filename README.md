@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# BROFLIX
 
-## Getting Started
+Movies and series for the bros. A Netflix-style streaming front end built with **Next.js 16 (App Router)**, **React 19**, **TypeScript** and **Tailwind CSS 4**, with no other runtime dependencies.
 
-First, run the development server:
+## Features
+
+- **Home**: featured hero with autoplaying preview, trending movie/series rows, and "More Like This" that updates as you pick titles
+- **Catalogue**: `/movies` and `/series` with genre filters and sorting (best match, top rated, newest, A–Z)
+- **Details pages**: `/movies/[slug]` and `/series/[slug]`, statically generated with Open Graph metadata
+- **Watch page**: `/watch/[id]` full-screen player with auto-hiding title bar and a graceful error state
+- **Search**: header search box → `/search?q=` (title, description, genre, year)
+- **My List**: save titles from any card, hero or details page. Stored in the browser and synced across tabs
+- **Account**: demo sign-in / sign-up at `/login` (local only, ready to swap for real auth)
+- Help, Contact, Privacy and Terms pages, plus a custom 404
+
+## Getting started
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # production build
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Optional: set `NEXT_PUBLIC_SITE_URL` in production so social-share images resolve to your domain.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+app/                 routes (thin pages)
+  (info)/[page]/     help, contact, privacy, terms
+  movies/ series/    catalogue + [slug] details
+  watch/[id]/        player
+  search/ my-list/ login/
+components/
+  layout/            header, app shell
+  home/              hero, rows, cards, footer
+  movie/             catalogue browser, details, My List button
+  watch/             video player
+  account/           My List view, login form
+  ui/                page intro, empty state
+lib/catalog.ts       the ONLY place pages read titles from: swap for an API later
+hooks/use-my-list.ts localStorage-backed list (useSyncExternalStore)
+data/                mock movies & series
+types/               shared models
+```
 
-## Learn More
+## Adding a title
 
-To learn more about Next.js, take a look at the following resources:
+Add an entry to `data/movies.ts` or `data/series.ts`. Put the poster/backdrop in `public/images/` and, for playback, a video in `public/videos/` referenced by `videoUrl` (falls back to `previewVideoUrl`, then the sample clip).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Roadmap
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Real authentication and a per-user My List on a backend
+- Catalogue from a database or headless CMS (only `lib/catalog.ts` changes)
+- HLS streaming for full-length titles
+- Seasons and episodes for series
 
-## Deploy on Vercel
+## Credits
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The My List store pattern is adapted from [Reely](https://github.com/Vette1123/movies-streaming-platform) by Mohamed Gado (MIT).

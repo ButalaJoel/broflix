@@ -35,6 +35,8 @@ export type Movie = {
   titleLogo?: string;
   preview?: MediaImage;
   previewVideoUrl?: string;
+  /** Full-length stream for the watch page. Falls back to the preview, then the default clip. */
+  videoUrl?: string;
   featured?: boolean;
 };
 

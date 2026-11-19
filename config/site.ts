@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Broflix",
   shortName: "Broflix",
-  description: "Architecture foundation for a streaming platform.",
+  description: "Movies and series for the bros.",
   routes: {
     home: "/",
     movies: "/movies",

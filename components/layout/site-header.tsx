@@ -2,8 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { useRef, useState } from "react";
+import type { FormEvent } from "react";
 import { siteConfig } from "@/config/site";
 
 const navigationItems = [
@@ -17,6 +18,31 @@ export function SiteHeader() {
   const pathname = usePathname();
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [query, setQuery] = useState("");
+  const router = useRouter();
+  const searchInputRef = useRef<HTMLInputElement>(null);
+
+  const handleSearchSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const trimmed = query.trim();
+    if (!trimmed) {
+      setIsSearchOpen(true);
+      searchInputRef.current?.focus();
+      return;
+    }
+    router.push(`${siteConfig.routes.search}?q=${encodeURIComponent(trimmed)}`);
+    setIsMobileMenuOpen(false);
+  };
+
+  const handleSearchToggle = () => {
+    if (isSearchOpen && query.trim()) {
+      return; // let the form submit
+    }
+    setIsSearchOpen((open) => {
+      if (!open) requestAnimationFrame(() => searchInputRef.current?.focus());
+      return !open;
+    });
+  };
 
   const isRouteActive = (href: string) => {
     if (href === "/") {
@@ -70,7 +96,9 @@ export function SiteHeader() {
         </nav>
 
         <div className="ml-auto flex items-center gap-2 sm:gap-3">
-          <div
+          <form
+            role="search"
+            onSubmit={handleSearchSubmit}
             className={[
               "flex items-center overflow-hidden rounded-full border transition-all duration-200",
               isSearchOpen
@@ -79,10 +107,10 @@ export function SiteHeader() {
             ].join(" ")}
           >
             <button
-              type="button"
+              type={isSearchOpen && query.trim() ? "submit" : "button"}
               aria-label="Search Broflix"
               aria-expanded={isSearchOpen}
-              onClick={() => setIsSearchOpen((open) => !open)}
+              onClick={handleSearchToggle}
               className="inline-flex h-10 shrink-0 items-center justify-center gap-2 rounded-full px-3 text-zinc-300 transition-colors duration-200 hover:bg-zinc-800/80 hover:text-[#00FF00] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00FF00] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a] sm:w-auto"
             >
               <svg
@@ -111,14 +139,17 @@ export function SiteHeader() {
             <input
               type="search"
               aria-label="Search input"
-              placeholder="Search..."
-              readOnly
+              placeholder="Titles, genres..."
+              ref={searchInputRef}
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              tabIndex={isSearchOpen ? 0 : -1}
               className={[
                 "h-10 bg-transparent text-sm text-zinc-50 placeholder:text-zinc-500 transition-all duration-200 ease-out focus:outline-none",
                 isSearchOpen ? "mr-3 w-28 opacity-100 sm:w-36" : "mr-0 w-0 opacity-0",
               ].join(" ")}
             />
-          </div>
+          </form>
 
           <Link
             href={siteConfig.routes.login}

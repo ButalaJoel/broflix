@@ -14,8 +14,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
   title: "Broflix",
-  description: "Broflix architecture foundation for a streaming platform.",
+  description: "Broflix — movies and series for the bros. Stream, save and binge.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

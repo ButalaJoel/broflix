@@ -15,9 +15,9 @@ const supportLinks = [
 ];
 
 const socialLinks = [
-  { label: "YouTube", href: "/youtube" },
-  { label: "Instagram", href: "/instagram" },
-  { label: "TikTok", href: "/tiktok" },
+  { label: "YouTube", href: "https://www.youtube.com" },
+  { label: "Instagram", href: "https://www.instagram.com" },
+  { label: "TikTok", href: "https://www.tiktok.com" },
 ];
 
 export function Footer() {
@@ -61,9 +61,14 @@ export function Footer() {
             <ul className="mt-4 space-y-2 text-sm">
               {socialLinks.map((link) => (
                 <li key={link.label}>
-                  <Link href={link.href} className="transition-colors hover:text-[#00FF00]">
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-colors hover:text-[#00FF00]"
+                  >
                     {link.label}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -71,7 +76,7 @@ export function Footer() {
         </div>
 
         <div className="mt-8 border-t border-white/10 pt-5 text-sm text-zinc-500">
-          © 2026 Broflix
+          © {new Date().getFullYear()} Broflix
         </div>
       </div>
     </footer>
